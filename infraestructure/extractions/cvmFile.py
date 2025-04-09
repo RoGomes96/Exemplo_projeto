@@ -9,7 +9,8 @@ from src.common.logger.logger import logger
 
 
 def download_cvm_zip(currentMonth):
-    url = f'htpps://dados.cvm.gov.br/dados/FI/DOC/INF_DIARIO/DADOS/inf_diario_fi_{currentMonth}.zip'
+    url = f'https://dados.cvm.gov.br/dados/FI/DOC/INF_DIARIO/DADOS/inf_diario_fi_{currentMonth}.zip'
+
     webbrowser.open(url, new=2)
 
 
@@ -57,7 +58,7 @@ def get_cvm_csv_file():
         except:
             None
         file_path_csv = file_path_zip.replace('.zip', '.csv')
-        df_cvm_csv = pd.read_csv(file_path_zip, sep=';')
+        df_cvm_csv = pd.read_csv(file_path_csv, sep=';')
         os.chdir(download_dir)
         os.remove(file_path_zip)
         if os.path.exists(dirCvmFile):
